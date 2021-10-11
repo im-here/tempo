@@ -83,7 +83,8 @@ func (t *App) initServer() (services.Service, error) {
 }
 
 func (t *App) initRing() (services.Service, error) {
-	ring, err := tempo_ring.New(t.cfg.Ingester.LifecyclerConfig.RingConfig, "ingester", t.cfg.Ingester.OverrideRingKey, prometheus.DefaultRegisterer)
+	ring, err := tempo_ring.New(t.cfg.Ingester.LifecyclerConfig.RingConfig, "ingester", t.cfg.Ingester.OverrideRingKey,
+		prometheus.DefaultRegisterer)
 	if err != nil {
 		return nil, fmt.Errorf("failed to create ring %w", err)
 	}
